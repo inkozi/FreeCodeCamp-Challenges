@@ -1,0 +1,17 @@
+//solution for https://learn.freecodecamp.org/javascript-algorithms-and-data-structures/javascript-algorithms-and-data-structures-projects/palindrome-checker/
+
+function palindrome(str) {
+//convert string to lowercase and strip out all non-alphanumeric character (except "_")
+  let filtered = str
+    .toLowerCase()
+    .replace(/[\W_]/g, "");
+
+//check if the first character of filtered string matches the last character. Return false if not matching. 
+//Iterate loop for each charater of the string until it reaches the halfway point. Return true if all matched.
+  for (let i = 0; i <= filtered.length/2 -1; i++){
+    if (filtered[i] !== filtered[filtered.length -1 -i]){
+      return false;
+    }
+  }
+  return true;
+}
