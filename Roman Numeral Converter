@@ -1,0 +1,91 @@
+//solution for https://learn.freecodecamp.org/javascript-algorithms-and-data-structures/javascript-algorithms-and-data-structures-projects/roman-numeral-converter
+
+function convertToRoman(num) {
+  let numStr = num.toString();
+  let digits = [];
+  for (let i =0; i < numStr.length; i++){
+    digits.push(numStr[i]);
+  }
+  digits = digits.map(x => {return parseInt(x)})
+  
+  let result = "";
+  let digitCounter = 0;
+  while (digitCounter < digits.length){
+    switch (digitCounter){
+      case 0: switch(digits[digits.length-1-digitCounter]){
+        case 1: result = "I" + result;
+          break;
+        case 2: result = "II" + result;
+          break;
+        case 3: result = "III" + result;
+          break;
+        case 4: result = "IV" + result;
+          break;
+        case 5: result = "V" + result;
+          break;
+        case 6: result = "VI" + result;
+          break;
+        case 7: result = "VII" + result;
+          break;
+        case 8: result = "VIII" + result;
+          break;
+        case 9: result = "IX" + result;
+          break;
+      };
+      break;
+      case 1: switch(digits[digits.length-1-digitCounter]){
+        case 1: result = "X" + result;
+          break;
+        case 2: result = "XX" + result;
+          break;
+        case 3: result = "XXX" + result;
+          break;
+        case 4: result = "XL" + result;
+          break;
+        case 5: result = "L" + result;
+          break;
+        case 6: result = "LX" + result;
+          break;
+        case 7: result = "LXX" + result;
+          break;
+        case 8: result = "LXXX" + result;
+          break;
+        case 9: result = "XC" + result;
+          break;
+      };
+      break;
+      case 2: switch(digits[digits.length-1-digitCounter]){
+        case 1: result = "C" + result;
+          break;
+        case 2: result = "CC" + result;
+          break;
+        case 3: result = "CCC" + result;
+          break;
+        case 4: result = "CD" + result;
+          break;
+        case 5: result = "D" + result;
+          break;
+        case 6: result = "DC" + result;
+          break;
+        case 7: result = "DCC" + result;
+          break;
+        case 8: result = "DCCC" + result;
+          break;
+        case 9: result = "CM" + result;
+          break;
+      };
+      break;
+      case 3: switch(digits[digits.length-1-digitCounter]){
+        case 1: result = "M" + result;
+          break;
+        case 2: result = "MM" + result;
+          break;
+        case 3: result = "MMM" + result;
+          break;
+      };
+      break;
+    }
+    digitCounter++;
+  }
+  return result;
+}
