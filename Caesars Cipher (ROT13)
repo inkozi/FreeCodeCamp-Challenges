@@ -1,0 +1,21 @@
+//My solution for: https://learn.freecodecamp.org/javascript-algorithms-and-data-structures/javascript-algorithms-and-data-structures-projects/caesars-cipher/
+//Tried to get fancy with Array.map() but I couldn't get the syntax to work so I had to settle for ugly for loops and if statements
+//Better ugly, working code than beautiful, broken code
+
+function rot13(str) { // LBH QVQ VG!
+  let unicode = [];
+  let result = "";
+  for (let i = 0; i< str.length; i++){
+    unicode.push(str[i].charCodeAt());  
+  }
+  for (let i = 0; i< unicode.length; i++){
+    if (65 <= unicode[i] && unicode[i] <= 77){
+      result += String.fromCharCode(unicode[i]+13);
+    } else if (78 <= unicode[i] && unicode[i] <= 90){
+      result += String.fromCharCode(unicode[i]-13);
+  } else {
+    result += String.fromCharCode(unicode[i])
+    }
+  }
+  return result;
+}
