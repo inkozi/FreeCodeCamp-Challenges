@@ -1,0 +1,50 @@
+//my solution to Algorithms: Inventory Update at https://learn.freecodecamp.org/coding-interview-prep/algorithms/inventory-update
+
+function updateInventory(arr1, arr2) {
+    // All inventory must be accounted for or you're fired!
+    //create copy of arr1 to avoid mutating original data
+    var result = arr1.slice();
+    //updating and adding inventory
+    //iterate through each arr2 item
+    duplicateCheck: for (var i = 0; i < arr2.length; i++){
+        //iterate through each result item
+        for (var k = 0; k < result.length; k++){
+            //if the item names from arr2 and result match, add the inventory value from arr2 to result
+            if (arr2[i][1] == result[k][1]){
+                result[k][0] += arr2[i][0];
+                //skip through the rest of the result items and move to the next arr2 item
+                continue duplicateCheck;
+            }
+        }
+        //if an item in arr2 does not match any item in arr1, the item is appended to result as a new item
+        result.push(arr2[i]);
+    }
+    //temporarily rearrange the order of the subarrays for sorting
+    for (var i = 0; i < result.length; i++){
+        result[i] = [result[i][1], result[i][0]];
+    }
+    //sort items
+    result.sort();
+    //arrange the subarrays back to their original order
+    for (var i = 0; i < result.length; i++){
+        result[i] = [result[i][1], result[i][0]];
+    }
+    return result;
+}
+
+// Example inventory lists
+var curInv = [
+    [21, "Bowling Ball"],
+    [2, "Dirty Sock"],
+    [1, "Hair Pin"],
+    [5, "Microphone"]
+];
+
+var newInv = [
+    [2, "Hair Pin"],
+    [3, "Half-Eaten Apple"],
+    [67, "Bowling Ball"],
+    [7, "Toothpaste"]
+];
+
+updateInventory(curInv, newInv);
